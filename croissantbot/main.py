@@ -59,7 +59,7 @@ async def link_command(interaction: discord.Interaction):
     )
     await interaction.followup.send(embed=embed)
 
-# /machineevent コマンド（色付きの枠 Embed に変更！）
+# /machineevent コマンド（色付きの枠 Embed に変更）
 @bot.tree.command(name="machineevent", description="アドミンマシンの属性の確率表を表示します")
 async def machineevent_command(interaction: discord.Interaction):
     await interaction.response.defer()
@@ -79,7 +79,7 @@ async def machineevent_command(interaction: discord.Interaction):
     embed = discord.Embed(
         title="🎰 アドミンマシン 属性確率表",
         description=probability_text,
-        color=discord.Color.green()  # 緑色の枠（好きな色に変更可能）
+        color=discord.Color.green()
     )
     embed.set_footer(text="Steal the Brainrot • Admin Machine Events")
     
