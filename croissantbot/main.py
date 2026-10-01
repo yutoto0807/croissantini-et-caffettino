@@ -59,22 +59,22 @@ async def link_command(interaction: discord.Interaction):
     )
     await interaction.followup.send(embed=embed)
 
-# /machineevent コマンド（倍率を追加！）
+# /machineevent コマンド（倍率付き！）
 @bot.tree.command(name="machineevent", description="アドミンマシンの属性の確率と倍率を表示します")
 async def machineevent_command(interaction: discord.Interaction):
     await interaction.response.defer()
     
     probability_text = (
         "アドミンマシンの属性の確率と倍率表です。\n\n"
-        "・Heaven 11% `12.5x`\n"
-        "・Void 11% `13x`\n"
-        "・Rave 13% `12x`\n"
-        "・Aqua 11% `9x`\n"
-        "・Neon 12% `9.5x`\n"
-        "・Gothic 10% `13x`\n"
-        "・Summer 11% `13.5x`\n"
-        "・Magical 11% `13.5x`\n"
-        "・Jungle 10% `14x`"
+        "· Heaven 11% `12.5x`\n"
+        "· Void 11% `13x`\n"
+        "· Rave 13% `12x`\n"
+        "· Aqua 11% `9x`\n"
+        "· Neon 12% `9.5x`\n"
+        "· Gothic 10% `13x`\n"
+        "· Summer 11% `13.5x`\n"
+        "· Magical 11% `13.5x`\n"
+        "· Jungle 10% `14x`"
     )
     
     await interaction.followup.send(probability_text)
