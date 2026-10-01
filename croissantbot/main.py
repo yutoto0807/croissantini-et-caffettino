@@ -59,31 +59,25 @@ async def link_command(interaction: discord.Interaction):
     )
     await interaction.followup.send(embed=embed)
 
-# /machineevent コマンド（色付きの枠 Embed に変更）
-@bot.tree.command(name="machineevent", description="アドミンマシンの属性の確率表を表示します")
+# /machineevent コマンド（倍率を追加！）
+@bot.tree.command(name="machineevent", description="アドミンマシンの属性の確率と倍率を表示します")
 async def machineevent_command(interaction: discord.Interaction):
     await interaction.response.defer()
     
     probability_text = (
-        "· Heaven 11%\n"
-        "· Void 11%\n"
-        "· Rave 13%\n"
-        "· Aqua 11%\n"
-        "· Neon 12%\n"
-        "· Gothic 10%\n"
-        "· Summer 11%\n"
-        "· Magical 11%\n"
-        "· Jungle 10%"
+        "アドミンマシンの属性の確率と倍率表です。\n\n"
+        "・Heaven 11% `12.5x`\n"
+        "・Void 11% `13x`\n"
+        "・Rave 13% `12x`\n"
+        "・Aqua 11% `9x`\n"
+        "・Neon 12% `9.5x`\n"
+        "・Gothic 10% `13x`\n"
+        "・Summer 11% `13.5x`\n"
+        "・Magical 11% `13.5x`\n"
+        "・Jungle 10% `14x`"
     )
     
-    embed = discord.Embed(
-        title="🎰 アドミンマシン 属性確率表",
-        description=probability_text,
-        color=discord.Color.green()
-    )
-    embed.set_footer(text="Steal the Brainrot • Admin Machine Events")
-    
-    await interaction.followup.send(embed=embed)
+    await interaction.followup.send(probability_text)
 
 token = os.getenv("DISCORD_TOKEN")
 bot.run(token)
