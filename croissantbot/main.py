@@ -6,13 +6,11 @@ from discord.ext import commands
 intents = discord.Intents.default()
 intents.message_content = True
 
-# Botクラスを拡張して安全にコマンド同期を行う
 class MyBot(commands.Bot):
     def __init__(self):
         super().__init__(command_prefix="!", intents=intents)
 
     async def setup_hook(self):
-        # 起動の準備段階でスラッシュコマンドを確実に同期
         try:
             synced = await self.tree.sync()
             print(f"✅ 【起動完了】{len(synced)} 個のスラッシュコマンドを同期しました！")
@@ -61,12 +59,12 @@ async def link_command(interaction: discord.Interaction):
     )
     await interaction.followup.send(embed=embed)
 
-# /machineevent コマンド
+# /machineevent コマンド（色付きの枠 Embed に変更！）
 @bot.tree.command(name="machineevent", description="アドミンマシンの属性の確率表を表示します")
 async def machineevent_command(interaction: discord.Interaction):
     await interaction.response.defer()
-    text = (
-        "アドミンマシンの属性の確率表です。\n"
+    
+    probability_text = (
         "· Heaven 11%\n"
         "· Void 11%\n"
         "· Rave 13%\n"
@@ -77,7 +75,15 @@ async def machineevent_command(interaction: discord.Interaction):
         "· Magical 11%\n"
         "· Jungle 10%"
     )
-    await interaction.followup.send(text)
+    
+    embed = discord.Embed(
+        title="🎰 アドミンマシン 属性確率表",
+        description=probability_text,
+        color=discord.Color.green()  # 緑色の枠（好きな色に変更可能）
+    )
+    embed.set_footer(text="Steal the Brainrot • Admin Machine Events")
+    
+    await interaction.followup.send(embed=embed)
 
 token = os.getenv("DISCORD_TOKEN")
 bot.run(token)
